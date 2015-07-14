@@ -3,11 +3,6 @@
   <head>
     <meta charset="utf-8">
     <title>Asteroids</title>
-  </head>
-  <body>
-    <h3>Asteroids</h3>
-    <canvas width="600" height="600" id="game-canvas"></canvas>
-
     <script src="lib/movingObject.js"></script>
     <script src="lib/util.js"></script>
     <script src="lib/asteroid.js"></script>
@@ -18,10 +13,27 @@
     <script src="lib/game.js"></script>
     <script src="lib/gameView.js"></script>
 
-
     <style type="text/css">
-      canvas { background: black;}
+      #game-canvas { margin: auto;
+      background: black}
+      #canvas-box { width: 600px;
+                background: black;
+              margin: 0 auto;}
+      #header-box {width: 600px;
+              margin: 0 auto; text-align: center}
+
     </style>
+  </head>
+
+  <body>
+    <section id="header-box">
+      <h1>Asteroids</h1>
+    </section>
+
+    <section id="canvas-box">
+      <canvas width="600" height="600" id="game-canvas"></canvas>
+    </section>
+
     <script type="text/javascript">
       var canvas = document.getElementById('game-canvas');
       var ctx = canvas.getContext('2d');
@@ -30,4 +42,5 @@
       gameView.start();
     </script>
   </body>
+
 </html>
