@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link href='http://fonts.googleapis.com/css?family=Press+Start+2P' rel='stylesheet' type='text/css'>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <script src="http://code.jquery.com/ui/1.9.2/jquery-ui.js"></script>
+    <link href='http://fonts.googleapis.com/css?family=Press+Start+2P' rel='stylesheet' type='text/css'>
     <meta charset="utf-8">
     <title>Asteroids</title>
     <script src="lib/movingObject.js"></script>
@@ -17,53 +17,93 @@
     <script src="lib/gameView.js"></script>
 
     <style type="text/css">
+      .game { width: 900px; margin: 0 auto; }
       h1 {
         color: blue;
         font-family: "Press Start 2P", cursive;
       }
       #game-canvas { margin: auto;
-      background: url(https://dl.dropboxusercontent.com/u/22258339/star_wars.jpg);
+      background: url("assets/star_wars.jpg");
       background-size: cover;
+
       }
       #canvas-box { width: 850px;
                 background: black;
               margin: 0 auto;
-              border: 3px solid blue;}
+              border: 3px solid blue;
+              position: relative;}
       #header-box {width: 850px;
               margin: 0 auto; text-align: center;}
       #reset-box {width: 850px;
               margin: 0 auto; text-align: center;
             }
       button {font-size: 30px; font-family: "Press Start 2P", cursive; margin-top: 10px;}
+      button:hover {color: #fff; background: #000;}
+      #instructions {border: 1px solid #fff; background: #000; position: absolute; font-size: 15px; font-family: "Press Start 2P", cursive; margin-top: 10px; color: blue; bottom: 225px; left: 200px; padding: 20px;}
       body {
         background: #000;
       }
+      .display-none { display: none;}
 
     </style>
   </head>
 
   <body>
-    <section id="header-box">
-      <h1>Asteroids</h1>
+    <section class="game">
+      <section id="header-box">
+        <h1>Asteroids</h1>
+      </section>
+
+      <section id="canvas-box">
+        <canvas width="850" height="600" id="game-canvas"></canvas>
+        <section id="instructions">
+          <p>
+            Up: Accelerate
+          </p>
+          <p>
+            Down: Decelerate
+          </p>
+          <p>
+            Right: Rotate Clockwise
+          </p>
+          <p>
+            Left: Rotate Counterclockwise
+          </p>
+          <p>
+            Spacebar: Shoot
+          </p>
+          <p>
+            P: Start Game
+          </p>
+        </section>
+      </section>
+
+      <section id="reset-box">
+        <form onClick="history.go(0)">
+          <button>Reset Game</button>
+        </form>
+      </section>
+
+
+
+      <script type="text/javascript">
+        var canvas = document.getElementById('game-canvas');
+        var ctx = canvas.getContext('2d');
+        var imageObj = new Image();
+        imageObj.src = "assets/asteroid_blue.png";
+        var game = new Asteroids.Game(ctx);
+        var gameView = new Asteroids.GameView(game, ctx);
+        key('p', function(){
+
+          event.preventDefault();
+          $("#instructions").addClass("display-none");
+          gameView.start() });
+        // imageObj.onload = function(){
+        //   gameView.start();
+        // }.bind(this)
+      </script>
     </section>
 
-    <section id="canvas-box">
-      <canvas width="850" height="600" id="game-canvas"></canvas>
-    </section>
-
-    <section id="reset-box">
-      <form onClick="history.go(0)">
-        <button>Reset Game</button>
-      </form>
-    </section>
-
-    <script type="text/javascript">
-      var canvas = document.getElementById('game-canvas');
-      var ctx = canvas.getContext('2d');
-      var game = new Asteroids.Game(ctx);
-      var gameView = new Asteroids.GameView(game, ctx);
-      gameView.start();
-    </script>
   </body>
 
 </html>
