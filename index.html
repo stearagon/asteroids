@@ -87,6 +87,12 @@
 
 
       <script type="text/javascript">
+        key('down', function(){
+          event.preventDefault();
+        })
+        key('up', function(){
+          event.preventDefault();
+        })
         var canvas = document.getElementById('game-canvas');
         var ctx = canvas.getContext('2d');
         var imageObj = new Image();
@@ -98,6 +104,7 @@
           event.preventDefault();
           $("#instructions").addClass("display-none");
           gameView.start() });
+
         // imageObj.onload = function(){
         //   gameView.start();
         // }.bind(this)
