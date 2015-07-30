@@ -1,0 +1,73 @@
+
+  body {
+    margin: 0;
+  }
+
+  .game {
+    margin: 0 auto;
+  }
+
+  h1 {
+    color: blue;
+    font-family: "Press Start 2P", cursive;
+  }
+
+  #game-canvas {
+    background: url("../assets/star_wars.jpg");
+    background-size: cover;
+    margin: 5px;
+    border: 1px solid blue;
+  }
+
+  #header-box {
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  #reset-box {
+   margin: 0;
+   padding: 0;
+   text-align: center;
+   position: absolute;
+   top: 60%;
+   left: 35%;
+   font-size: 1.5vw;
+  }
+
+  button {
+    font-size: 30px;
+    font-family: "Press Start 2P", cursive;
+    border: 1px solid #000;
+  }
+
+  button:hover {
+    color: #fff;
+    background: #000;
+  }
+
+  #instructions {
+    border: 1px solid #fff;
+    background: #000;
+    position: absolute;
+    font-size: 1.5vw;
+    font-family: "Press Start 2P", cursive;
+    color: blue;
+    top: 22.5%;
+    left: 27.5%;
+    padding: 20px;
+  }
+
+  .instructs-title {
+    font-size: 2vw;
+    margin: 0 auto;
+    text-align: center;
+    color: orange;
+  }
+
+  body {
+    background: #000;
+  }
+
+  .display-none {
+    display: none;
+  }
