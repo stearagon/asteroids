@@ -17,29 +17,32 @@
     <script src="lib/gameView.js"></script>
 
     <style type="text/css">
-      .game { width: 900px; margin: 0 auto; }
+      body { margin: 0; }
+      .game { margin: 0 auto; }
       h1 {
         color: blue;
         font-family: "Press Start 2P", cursive;
       }
-      #game-canvas { margin: auto;
+      #game-canvas {
       background: url("assets/star_wars.jpg");
       background-size: cover;
+      margin: 5px;
+      border: 1px solid blue;
+      /*border: 3px solid blue;*/
 
       }
-      #canvas-box { width: 850px;
-                background: black;
-              margin: 0 auto;
+      /*#canvas-box {
+              background: black;
               border: 3px solid blue;
-              position: relative;}
-      #header-box {width: 850px;
+              position: relative;}*/
+      #header-box {
               margin: 0 auto; text-align: center;}
-      #reset-box {width: 850px;
-              margin: 0 auto; text-align: center;
+      #reset-box {
+             margin: 0; padding: 0; text-align: center; position: absolute; top: 60%; left: 37.5%; font-size: 1.5vw;
             }
-      button {font-size: 30px; font-family: "Press Start 2P", cursive; margin-top: 10px;}
+      button {font-size: 30px; font-family: "Press Start 2P", cursive; border: 1px solid #000; }
       button:hover {color: #fff; background: #000;}
-      #instructions {border: 1px solid #fff; background: #000; position: absolute; font-size: 15px; font-family: "Press Start 2P", cursive; margin-top: 10px; color: blue; bottom: 225px; left: 200px; padding: 20px;}
+      #instructions {border: 1px solid #fff; background: #000; position: absolute; font-size: 1.5vw; font-family: "Press Start 2P", cursive; color: blue; top: 22.5%; left: 27.5%; padding: 20px;}
       body {
         background: #000;
       }
@@ -50,12 +53,12 @@
 
   <body>
     <section class="game">
-      <section id="header-box">
+      <!-- <section id="header-box">
         <h1>Asteroids</h1>
-      </section>
+      </section> -->
 
-      <section id="canvas-box">
-        <canvas width="850" height="600" id="game-canvas"></canvas>
+      <!-- <section id="canvas-box"> -->
+        <canvas id="game-canvas"></canvas>
         <section id="instructions">
           <p>
             Up: Accelerate
@@ -76,9 +79,9 @@
             P: Start Game
           </p>
         </section>
-      </section>
+      <!-- </section> -->
 
-      <section id="reset-box">
+      <section id="reset-box" class="display-none">
         <form onClick="history.go(0)">
           <button>Reset Game</button>
         </form>
@@ -94,6 +97,8 @@
           event.preventDefault();
         })
         var canvas = document.getElementById('game-canvas');
+        canvas.width = window.innerWidth - 20
+        canvas.height = window.innerHeight - 20
         var ctx = canvas.getContext('2d');
         var imageObj = new Image();
         imageObj.src = "assets/asteroid_blue.png";
@@ -103,7 +108,8 @@
 
           event.preventDefault();
           $("#instructions").addClass("display-none");
-          gameView.start() });
+          gameView.start()
+        });
 
         // imageObj.onload = function(){
         //   gameView.start();
